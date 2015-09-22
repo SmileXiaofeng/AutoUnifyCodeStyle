@@ -1,6 +1,7 @@
 #!/bin/bash
 #find .git directory
-git_root=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+scriptDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+git_root=$scriptDir
 echo $git_root
 while [ ! -e "$git_root/.git" ]; do
     git_root=${git_root%/*}
@@ -35,7 +36,7 @@ else
   echo 'git diff --cached | clang-format-diff.py -i -p1' >> pre-commit
   echo "git add -u" >> pre-commit
 fi
-cd $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $scriptDir
 rm install 
 
 
