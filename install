@@ -1,0 +1,39 @@
+#!/bin/bash
+#find .git directory
+git_root=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+echo $git_root
+while [ ! -e "$git_root/.git" ]; do
+    git_root=${git_root%/*}
+      if [ "$git_root" = "" ]; then break; fi
+done
+cd $git_root
+if [ -e clang-format ]
+then
+  rm clang-format
+fi
+wget https://raw.github.com/SmileXiaofeng/AutoUnitCodeStyle/master/clang-format
+chmod +x clang-format
+if [ -e clang-format-diff.py ]
+then
+  rm clang-format-diff.py
+fi
+wget https://raw.github.com/SmileXiaofeng/AutoUnitCodeStyle/master/clang-format-diff.py
+chmod +x clang-format-diff.py
+if [ -e .clang-format ]
+then
+  rm .clang-format
+fi
+wget https://raw.github.com/SmileXiaofeng/AutoUnitCodeStyle/master/.clang-format
+cd ${git_root}/.git/hooks
+if [ ! -e pre-commit ]
+then
+  wget https://raw.github.com/SmileXiaofeng/AutoUnitCodeStyle/master/pre-commit
+  chmod +x pre-commit
+else  
+  echo "#AutoUnitCodeStyle" >> pre-commit
+  echo 'git diff --cached | python $(cd `dirname $0`; pwd)/../../AutoUnitCodeStyle/clang-format-diff.py -i -p1' >> pre-commit
+  echo "git add -u" >> pre-commit
+fi
+cd $git_root
+
+
