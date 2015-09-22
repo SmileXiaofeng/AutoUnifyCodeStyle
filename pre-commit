@@ -4,7 +4,6 @@
 # will be processed properly.
 scriptDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd $scriptDir/../..
-pwd
 git diff --cached | python clang-format-diff.py -i -p1
 git add -u
 
