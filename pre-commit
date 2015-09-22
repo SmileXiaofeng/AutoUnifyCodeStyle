@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# This file was placed here by GitLab. It makes sure that your pushed commits
+# will be processed properly.
+
+git diff --cached | python clang-format-diff.py -i -p1
+git add -u
+
