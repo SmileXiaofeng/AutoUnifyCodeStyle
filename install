@@ -34,6 +34,7 @@ else
   echo 'git diff --cached | python $(cd `dirname $0`; pwd)/../../AutoUnitCodeStyle/clang-format-diff.py -i -p1' >> pre-commit
   echo "git add -u" >> pre-commit
 fi
-cd $git_root
+cd $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+rm -- "$0"
 
 
