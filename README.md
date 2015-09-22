@@ -1,8 +1,11 @@
 # AutoUnitCodeStyle
 
-A tool to unit your team code style before commit. You can install it by pasting follow at a Terminal prompt.
+A tool to auto unit your team code style before commit. You can install it by pasting following command at a Terminal prompt.
 
 ``` 
 wget -O - https://raw.github.com/SmileXiaofeng/AutoUnitCodeStyle/master/install | bash
 ```
 
+And all your code that commit to repo will be formatted by clang-format.You can edit your code style in .clang-format file.[For Options please read Clang 3.8 documentation](http://clang.llvm.org/docs/ClangFormatStyleOptions.html/).If you have a project and need teamwork,it’s great way to unit team code style.You don’t have to write a code style guide and give all your teammate and spend much time to learn it.Just use same code style options and all the project code would look like one person wrote. Enjoy that.
+
+All teammates should run the command to install AutoUnitCodeStyle.
