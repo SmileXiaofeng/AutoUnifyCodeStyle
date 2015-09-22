@@ -32,6 +32,9 @@ then
   chmod +x pre-commit
 else  
   echo "#AutoUnitCodeStyle" >> pre-commit
+  echo 'scriptDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )' >>
+  pre-commit
+  echo 'cd $scriptDir/../..'
   echo 'git diff --cached | clang-format-diff.py -i -p1' >> pre-commit
   echo "git add -u" >> pre-commit
 fi
