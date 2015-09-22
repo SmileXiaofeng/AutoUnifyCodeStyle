@@ -31,7 +31,6 @@ then
   wget https://raw.github.com/SmileXiaofeng/AutoUnitCodeStyle/master/pre-commit
   chmod +x pre-commit
 else  
-  cd ${git_root}
   echo "#AutoUnitCodeStyle" >> pre-commit
   echo 'git diff --cached | clang-format-diff.py -i -p1' >> pre-commit
   echo "git add -u" >> pre-commit
