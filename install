@@ -39,6 +39,5 @@ else
   echo "git add -u" >> pre-commit
 fi
 cd $scriptDir
-rm install 
 
 
