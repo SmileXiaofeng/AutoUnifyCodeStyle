@@ -12,25 +12,25 @@ if [ -e clang-format ]
 then
   rm clang-format
 fi
-wget https://raw.github.com/SmileXiaofeng/AutoUnitCodeStyle/master/clang-format
+wget https://raw.github.com/SmileXiaofeng/AutoUnifyCodeStyle/master/clang-format
 chmod +x clang-format
 if [ -e clang-format-diff.py ]
 then
   rm clang-format-diff.py
 fi
-wget https://raw.github.com/SmileXiaofeng/AutoUnitCodeStyle/master/clang-format-diff.py
+wget https://raw.github.com/SmileXiaofeng/AutoUnifyCodeStyle/master/clang-format-diff.py
 chmod +x clang-format-diff.py
 if [ ! -e .clang-format ]
 then
-  wget https://raw.github.com/SmileXiaofeng/AutoUnitCodeStyle/master/.clang-format
+  wget https://raw.github.com/SmileXiaofeng/AutoUnifyCodeStyle/master/.clang-format
 fi
 cd ${git_root}/.git/hooks
 if [ ! -e pre-commit ]
 then
-  wget https://raw.github.com/SmileXiaofeng/AutoUnitCodeStyle/master/pre-commit
+  wget https://raw.github.com/SmileXiaofeng/AutoUnifyCodeStyle/master/pre-commit
   chmod +x pre-commit
 else  
-  echo "#AutoUnitCodeStyle" >> pre-commit
+  echo "#AutoUnifyCodeStyle" >> pre-commit
   echo 'scriptDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )' >> pre-commit
   echo 'cd $scriptDir/../..' >> pre-commit
   echo 'git diff --cached | python clang-format-diff.py -i -p1' >> pre-commit
